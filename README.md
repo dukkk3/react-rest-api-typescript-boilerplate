@@ -1,5 +1,9 @@
 # react-rest-api-typescript-boilerplate
 
+I will be glad to any suggestions and corrections, for I am constantly trying to improve the structure of my projects :)
+
+My email for contact - phoenix.ofdarkness@mail.ru
+
 # Pages
 This folder contains the components that form the pages. (Can use Containers, Smart, Ordinary, Simple, and UI components in their implementation)
 
