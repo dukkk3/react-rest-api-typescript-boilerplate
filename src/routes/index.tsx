@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 import { routesConfig } from "../core/config";
 
-const Routes = () => {
+export const Routes: React.FC = () => {
 	return (
 		<Switch>
 			<Route exact path='/'>
@@ -17,5 +17,3 @@ const Routes = () => {
 		</Switch>
 	);
 };
-
-export { Routes };

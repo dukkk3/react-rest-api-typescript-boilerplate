@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const CommonStyles = createGlobalStyle`
+export const CommonStyles = createGlobalStyle`
     html {
         font-size: ${(props) => props.theme.sizes.html.font};
     }
@@ -75,5 +75,3 @@ const CommonStyles = createGlobalStyle`
         user-select: none;
     }
 `;
-
-export { CommonStyles };

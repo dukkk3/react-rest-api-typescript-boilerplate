@@ -1,15 +1,5 @@
-import type { Schema } from "../../types";
+import { schemaHelpers } from "../../helpers";
 
-const app: App = {
-	userID: {
-		value: null,
-		set: function (value) {
-			this.value = value;
-		},
-	},
-};
-
-export { app };
-export type App = Schema.Store<{
-	userID: number | null;
-}>;
+export const app = schemaHelpers.createStoreSchema({
+	userID: null as null | number,
+});

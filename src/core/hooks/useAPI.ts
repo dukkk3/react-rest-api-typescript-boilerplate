@@ -1,33 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect } from "react";
-import { useLocalObservable } from "mobx-react-lite";
-import type { API, Take, Schema } from "../types";
+
+import { useLocalStore } from "./useLocalStore";
+import type { API, Take } from "../types";
 
 function useAPI<
 	F extends API.Service.Function<API.Response<any>>,
 	R extends Take.FromServiceFunction.Response<F>,
 	P extends Parameters<F>
 >({ service, isPendingAfterMount = false, ignoreHTTPErrors = false }: Options<F>) {
-	const localStore = useLocalObservable(
-		(): Store => ({
-			isPending: {
-				value: isPendingAfterMount,
-				set: function (value) {
-					this.value = value;
-				},
-			},
-		})
-	);
+	const localStore = useLocalStore({ isPending: isPendingAfterMount });
 
 	const call = useCallback(
 		async (...params: P): Promise<R["result"]> => {
-			localStore.isPending.set(true);
+			localStore.setIsPending(true);
 
 			try {
 				const { data } = await service(...params);
 				const { result } = data;
-
-				localStore.isPending.set(false);
 
 				return result;
 			} catch (error) {
@@ -35,20 +25,20 @@ function useAPI<
 					console.error(error);
 				}
 
-				localStore.isPending.set(false);
-
 				throw error;
+			} finally {
+				localStore.setIsPending(false);
 			}
 		},
 		[service, ignoreHTTPErrors]
 	);
 
 	const isPending = useCallback(() => {
-		return localStore.isPending.value;
+		return localStore.isPending;
 	}, []);
 
 	useEffect(() => {
-		localStore.isPending.set(isPendingAfterMount);
+		localStore.setIsPending(isPendingAfterMount);
 	}, [isPendingAfterMount]);
 
 	return {
@@ -63,7 +53,3 @@ export interface Options<F> {
 	isPendingAfterMount?: boolean;
 	ignoreHTTPErrors?: boolean;
 }
-
-type Store = Schema.Store<{
-	isPending: boolean;
-}>;

@@ -4,7 +4,7 @@ import { Align } from "../../simple/Align";
 
 import * as S from "./styled";
 
-const Table = <C extends { [s: string]: any }, R extends { [s: string]: any }>({
+export const Table = <C extends { [s: string]: any }, R extends { [s: string]: any }>({
 	rows,
 	columns,
 	header,
@@ -57,9 +57,7 @@ const Table = <C extends { [s: string]: any }, R extends { [s: string]: any }>({
 								CellContent: S.CellContent,
 							})
 						) : prepareRows ? (
-							<S.Row
-								key={`row-${rowIndex}`}
-								$templateColumns={preparedTemplateColumns}>
+							<S.Row key={`row-${rowIndex}`} $templateColumns={preparedTemplateColumns}>
 								{prepareRows(row).map((cell, cellIndex) => (
 									<S.Cell key={`cell-${cellIndex}`}>
 										<Align axis={["y"]}>
@@ -77,7 +75,6 @@ const Table = <C extends { [s: string]: any }, R extends { [s: string]: any }>({
 	);
 };
 
-export { Table };
 export interface Props<C, R> {
 	rows: R[];
 	columns: C;

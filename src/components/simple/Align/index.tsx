@@ -1,7 +1,8 @@
 import React, { memo } from "react";
+
 import * as S from "./styled";
 
-const Align = memo(({ children, axis, isAdaptable = false }: Readonly<Props>) => {
+export const Align: React.FC<Props> = memo(({ children, axis, isAdaptable = false }) => {
 	return (
 		<S.Align $axis={axis} $isAdaptable={isAdaptable}>
 			{children}
@@ -9,7 +10,6 @@ const Align = memo(({ children, axis, isAdaptable = false }: Readonly<Props>) =>
 	);
 });
 
-export { Align };
 export interface Props {
 	axis: ("y" | "x")[] | "x" | "y";
 	children?: React.ReactNode;

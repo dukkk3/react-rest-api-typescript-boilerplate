@@ -30,11 +30,10 @@ export namespace API {
 }
 
 export namespace Schema {
-	export type Store<F extends SchemaBase.Store> = {
-		[K in keyof F]: {
-			value: F[K];
-			set: (value: F[K]) => void;
-		};
+	export type Store<F extends SchemaBase.Store> = F & {
+		[K in WithSet<CamelCaseToPascalCase<keyof F>>]: (
+			value: F[PascalCaseToCamelCase<WithoutSet<K>>]
+		) => void;
 	};
 }
 
@@ -52,3 +51,14 @@ export namespace Take {
 			: never;
 	}
 }
+
+export type CamelCaseToPascalCase<T extends string> = T extends `${infer FirstLetter}${infer _Rest}`
+	? `${Capitalize<FirstLetter>}${_Rest}`
+	: T;
+
+export type PascalCaseToCamelCase<T extends string> = T extends `${infer FirstLetter}${infer _Rest}`
+	? `${Uncapitalize<FirstLetter>}${_Rest}`
+	: T;
+
+export type WithSet<T extends string> = `set${T}`;
+export type WithoutSet<T extends string> = T extends `set${infer _Rest}` ? _Rest : T;

@@ -1,7 +1,6 @@
 import { transparentize } from "polished";
-import { DefaultTheme } from "styled-components";
 
-export const theme: DefaultTheme = {
+export const theme = {
 	colors: {
 		common: {
 			primary: "#2648f1",

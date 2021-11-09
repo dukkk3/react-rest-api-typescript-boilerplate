@@ -1,7 +1,8 @@
 import React, { memo } from "react";
+
 import * as S from "./styled";
 
-const Image = memo(({ sources = [], alt = "", src = "", ...rest }: Props) => {
+export const Image: React.FC<Props> = memo(({ sources = [], alt = "", src = "", ...rest }) => {
 	return (
 		<S.Image className='noselect'>
 			<S.Picture>
@@ -16,7 +17,6 @@ const Image = memo(({ sources = [], alt = "", src = "", ...rest }: Props) => {
 	);
 });
 
-export { Image };
 export interface Props extends React.ComponentProps<"img"> {
 	sources?: {
 		src: string;
