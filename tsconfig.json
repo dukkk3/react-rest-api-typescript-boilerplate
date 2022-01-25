@@ -1,23 +1,32 @@
 {
-	"compilerOptions": {
-		"target": "es5",
-		"lib": ["dom", "dom.iterable", "esnext", "ES2019.Object"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"noFallthroughCasesInSwitch": true,
-		"module": "esnext",
-		"downlevelIteration": true,
-		"isolatedModules": true,
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"strictNullChecks": true,
-		"noEmit": true,
-		"keyofStringsOnly": true,
-		"jsx": "react-jsx"
-	},
-	"include": ["src", "src/core/types"]
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "ES2019.Object"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "downlevelIteration": true,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "noEmit": true,
+    "keyofStringsOnly": true,
+    "jsx": "react-jsx"
+  },
+  "extends": "./tsconfig.paths.json",
+  "include": [
+    "src",
+    "src/core/types"
+  ]
 }

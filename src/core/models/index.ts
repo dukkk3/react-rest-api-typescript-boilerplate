@@ -1,1 +1,1 @@
-export type { ProductModel } from "./product.model";
+export * as ProductModels from "./product.models";

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-import { Align } from "../../simple/Align";
+import { Align } from "@components/simple/Align";
 
 import * as S from "./styled";
 

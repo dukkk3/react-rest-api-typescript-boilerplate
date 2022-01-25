@@ -1,8 +1,9 @@
 {
-	"name": "v0.9.1",
+	"name": "boilerplate",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@craco/craco": "^6.4.3",
 		"axios": "^0.21.1",
 		"mobx": "^6.1.6",
 		"mobx-react-lite": "^3.2.0",
@@ -16,8 +17,8 @@
 		"web-vitals": "^1.0.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build"
+		"start": "craco start",
+		"build": "craco build"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -50,6 +51,7 @@
 		"@types/react-router": "^5.1.11",
 		"@types/react-router-dom": "^5.1.7",
 		"@types/styled-components": "^5.1.7",
+		"craco-alias": "^3.0.1",
 		"typescript": "^4.1.2"
 	}
 }

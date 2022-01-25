@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect } from "react";
 
-import { useLocalStore } from "./useLocalStore";
-import type { API, Take } from "../types";
+import { useLocalStore } from "@core/hooks";
+import type { API, Take } from "@core/types";
 
 function useAPI<
 	F extends API.Service.Function<API.Response<any>>,
