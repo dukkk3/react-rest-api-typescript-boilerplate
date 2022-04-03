@@ -7,6 +7,11 @@ const notAdaptableMixin = css`
 	max-width: 100%;
 `;
 
+interface AlignProps {
+	$axis: ("y" | "x")[] | "x" | "y";
+	$isAdaptable?: boolean;
+}
+
 const adaptableMixin = css<AlignProps>`
 	width: ${(props) => !props.$axis.includes("x") && "100%"};
 	height: ${(props) => !props.$axis.includes("y") && "100%"};
@@ -21,8 +26,3 @@ export const Align = styled.div<AlignProps>`
 	align-items: ${(props) => (props.$axis.includes("y") ? "center" : "start")};
 	${(props) => (props.$isAdaptable ? adaptableMixin : notAdaptableMixin)};
 `;
-
-export interface AlignProps {
-	$axis: ("y" | "x")[] | "x" | "y";
-	$isAdaptable?: boolean;
-}

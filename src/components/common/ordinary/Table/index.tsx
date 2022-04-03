@@ -1,8 +1,30 @@
 import React, { useMemo } from "react";
 
-import { Align } from "@components/simple/Align";
+import { Align } from "@components/common/simple/Align";
 
 import * as S from "./styled";
+
+export interface Props<C, R> {
+	rows: R[];
+	columns: C;
+	templateColumns?: (number | null | string)[];
+	prepareColumns?: (columns: C) => any[];
+	prepareRows?: (row: R) => any[];
+	renderRows?: (props: {
+		row: R;
+		index: number;
+		Row: typeof S.Row;
+		Cell: typeof S.Cell;
+		CellContent: typeof S.CellContent;
+	}) => React.ReactNode;
+	renderColumns?: (props: {
+		columns: C;
+		Cell: typeof S.Cell;
+		CellContent: typeof S.CellContent;
+	}) => React.ReactNode;
+	header?: React.ReactNode;
+	footer?: React.ReactNode;
+}
 
 export const Table = <C extends { [s: string]: any }, R extends { [s: string]: any }>({
 	rows,
@@ -74,25 +96,3 @@ export const Table = <C extends { [s: string]: any }, R extends { [s: string]: a
 		</S.Table>
 	);
 };
-
-export interface Props<C, R> {
-	rows: R[];
-	columns: C;
-	templateColumns?: (number | null | string)[];
-	prepareColumns?: (columns: C) => any[];
-	prepareRows?: (row: R) => any[];
-	renderRows?: (props: {
-		row: R;
-		index: number;
-		Row: typeof S.Row;
-		Cell: typeof S.Cell;
-		CellContent: typeof S.CellContent;
-	}) => React.ReactNode;
-	renderColumns?: (props: {
-		columns: C;
-		Cell: typeof S.Cell;
-		CellContent: typeof S.CellContent;
-	}) => React.ReactNode;
-	header?: React.ReactNode;
-	footer?: React.ReactNode;
-}

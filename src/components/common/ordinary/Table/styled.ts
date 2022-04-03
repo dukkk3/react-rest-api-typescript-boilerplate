@@ -27,6 +27,12 @@ export const CellContent = styled.div`
 	width: 100%;
 `;
 
+interface RowProps {
+	$isHead?: boolean;
+	$isSelected?: boolean;
+	$templateColumns: (number | string | null)[];
+}
+
 export const Row = styled.div<RowProps>`
 	display: grid;
 	grid-template-columns: ${(props) => unitsToGridTemplate(props.$templateColumns)};
@@ -59,9 +65,3 @@ export const Head = styled.div`
 		}
 	}
 `;
-
-export interface RowProps {
-	$isHead?: boolean;
-	$isSelected?: boolean;
-	$templateColumns: (number | string | null)[];
-}
