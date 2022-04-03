@@ -20,8 +20,7 @@ export function safelyParseJSON<T extends Record<string, any> | any[]>(string: s
 	}
 }
 
-export function simplyTransformToPascalCase(string: string) {
+export function camelCaseToPascalCase(string: string) {
 	const [firstLetter, ...rest] = string;
-
 	return `${firstLetter.toUpperCase()}${rest.join("")}`;
 }
